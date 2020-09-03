@@ -1,0 +1,44 @@
+parameters:
+    - name: STORE
+      description: "The store to watch to trigger the function and save the AWS Rekognition result."
+      type: STORE_REF
+      required: true
+    - name: IMAGGA_API_KEY
+      description: "A valid Imagga API key."
+      required: true
+      type: "SECRET_REF"
+    - name: IMAGGA_API_SECRET
+      description: "A valid Imagga API secret."
+      required: true
+      type: "SECRET_REF"
+    - name: IMAGGA_RECOGNITION_FUNCTION
+      description: "The name of the recognition operation to perform."
+      type: "STRING"
+      default: "label-detection"
+    - name: IMAGGA_FILE_PREFIX
+      description: "The file prefix used to store the Imagga recognition result."
+      type: "STRING"
+      default: "imagga-image-recognition"
+template: |
+    env:
+        IMAGGA_API_KEY:
+            value_from_secret: {{ .IMAGGA_API_KEY }}
+        IMAGGA_API_SECRET:
+            value_from_secret: {{ .IMAGGA_API_SECRET }}
+        {{ if .IMAGGA_RECOGNITION_FUNCTION }}
+        IMAGGA_RECOGNITION_FUNCTION: {{ .IMAGGA_RECOGNITION_FUNCTION }}
+        {{ end }}
+        {{ if .IMAGGA_FILE_PREFIX }}
+        IMAGGA_FILE_PREFIX: {{ .IMAGGA_FILE_PREFIX }}
+        {{ end }}
+    volumes:
+    - name: {{ .STORE }}
+      store: {{ .STORE }}
+    events:
+      - cloudevent:
+          expression: |
+            event.source == "koyeb.com/gateway" &&
+            event.subject == "{{ .STORE }}" &&
+            event.type.matches("s3:ObjectCreated:.*") &&
+            !data.object.key.startsWith("{{ .IMAGGA_FILE_PREFIX }}") &&
+            data.object.key.matches("([^\\s]+(\\.(?i)(jpe?g|png))$)")

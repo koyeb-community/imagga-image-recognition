@@ -1,0 +1,4 @@
+functions:
+  - name: function-imagga-image-recognition
+    runtime: nodejs14
+    handler: imagga-image-recognition.handler

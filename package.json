@@ -1,0 +1,12 @@
+{
+  "name": "function-imagga-image-recognition",
+  "version": "1.0.0",
+  "main": "./imagga-image-recognition.js",
+  "homepage": "https://www.koyeb.com",
+  "repository": "https://github.com/koyeb-community/function-imagga-image-recognition",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.742.0",
+    "node-fetch": "^2.6.0"
+  }
+}
