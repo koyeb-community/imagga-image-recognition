@@ -1,6 +1,6 @@
 parameters:
     - name: STORE
-      description: "The store to watch to trigger the function and save the immagga result."
+      description: "The store to watch to trigger the function and save the Imagga result."
       type: STORE_REF
       required: true
     - name: IMAGGA_API_KEY
