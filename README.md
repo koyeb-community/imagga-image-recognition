@@ -43,6 +43,6 @@ This function is triggered each time an object is created in the Store you use.
 
 Below is what you need to use this function:
 
-* A Koyeb valid account
+* A Koyeb account
 * Valid Imagga API credentials configured in your Koyeb account. To learn how to do this, please read how to [configure Secrets](/docs/secrets)
 * A Store to upload images and save the function result
