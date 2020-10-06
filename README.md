@@ -8,12 +8,12 @@ version: 1.0.0
 
 ## Summary
 
-Imagga provides advanced image analysis, recognition, and understanding APIs. The Imagga image recognition function lets you perform various analysis on your images:
+Imagga provides advanced image analysis and recognition. The Imagga image recognition function lets you perform various analysis on your images:
 
 - **Color detection**, to extract the colors in an image.
 - **Label detection**, to detect objects in an image.
 - **Image cropping**, to generate thumbnails.
-- **Face detection**, to detect faces, facial landmarks, age, gender, and ethnicity.
+- **Face detection**, to detect faces, facial attributes, age, gender, and ethnicity.
 - **Text detection**, to extract the text content of an image.
 - **Explicity content detection**, to identify explicit content in an image.
 - **Barcode detection**, to extract the barcode data in an image.
